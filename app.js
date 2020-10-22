@@ -4,9 +4,14 @@ const bodyParser = require('body-parser');
 const animalRouter = require("./routes/animalRoutes")
 const dotenv = require('dotenv')
 const userRouter = require('./routes/userRoutes');
+const cors = require('cors');
 
 const app = express()
 app.use(bodyParser.json());
+
+//app.enable('trust proxy');
+app.use(cors());
+app.options('*', cors());
 
 dotenv.config({path: './config.env'})
 
